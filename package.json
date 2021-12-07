@@ -1,0 +1,22 @@
+{
+  "name": "practice-project",
+  "version": "1.0.0",
+  "description": "practicing my project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuhammadMusab1/mittfilx-app.git"
+  },
+  "author": "Musab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuhammadMusab1/mittfilx-app/issues"
+  },
+  "homepage": "https://github.com/MuhammadMusab1/mittfilx-app#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}

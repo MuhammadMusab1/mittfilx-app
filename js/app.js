@@ -1,5 +1,6 @@
 const form = document.querySelector('.search');
 const titlesWrapper = document.querySelector('.titles-wrapper');
+const heading = document.createElement('H1');
 
 form.addEventListener('submit', handleSubmit)
 
@@ -7,7 +8,17 @@ function handleSubmit(e) {
   e.preventDefault()
   const input = document.querySelector('input');
   if (input.value !== '') {
-    getMovies(input.value).then(data => findEachMovie(data.Search));
+    titlesWrapper.innerHTML = ''
+    getMovies(input.value).then(data => {
+      if (data.Search !== undefined) {
+        findEachMovie(data.Search)
+      } else {
+        titlesWrapper.innerHTML = ''
+        heading.style.color = 'white'
+        heading.innerText = `${data.Error}`
+        titlesWrapper.appendChild(heading);
+      }
+    });
     input.value = '';
   } else {
     return;

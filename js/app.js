@@ -1,4 +1,5 @@
 const form = document.querySelector('.search');
+const titlesWrapper = document.querySelector('.titles-wrapper');
 
 form.addEventListener('submit', handleSubmit)
 
@@ -43,11 +44,24 @@ function getDataForOne(movieName) {
   });
 }
 
+function renderMovie(movieObj) {
+  titlesWrapper.insertAdjacentHTML('beforeend', `
+  <div class="movie">
+    <img src="${movieObj.Poster === 'N/A' ? '../image-not-found.jpg' : movieObj.Poster}">
+    <div class="overlay">
+      <div class="title">${movieObj.Title}</div>
+      <div class="rating">${movieObj.imdbRating}/10</div>
+      <div class="plot">
+      ${movieObj.Plot}
+      </div>
+    </div>
+  </div>
+  `)
+}
 
 function findEachMovie(movieArr) {
-  const titlesWrapper = document.querySelector('.titles-wrapper');
   movieArr.forEach(movie => {
-    getDataForOne(movie.Title).then(data => console.log(data));
+    getDataForOne(movie.Title).then(data => renderMovie(data));
   });
 }
 
